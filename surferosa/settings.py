@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'surferosa'
+    'surf_app',
+    'rest_framework',
+    'django_extensions',
+   
 ]
 
 MIDDLEWARE = [
