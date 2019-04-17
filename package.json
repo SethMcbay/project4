@@ -1,7 +1,7 @@
 {
-    "name": "Surferosa",
+    "name": "surferosa",
     "scripts": {
-        "build": "cd client && npm install && npm run build && cd ..",
-        "postinstall": "npm run build && echo 'Client built!"
+      "build": "cd client && npm install && npm run build && cd ..",
+      "postinstall": "npm run build && echo 'Client built!' "
     }
-}
+  }
