@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import viewsets
 
-from .serializers import SpotSerializer, ShopSerializer, NotesSerializer
+from .serializer import SpotSerializer, ShopSerializer, NotesSerializer
 from .models import Spot, Shop, Notes
 
 
