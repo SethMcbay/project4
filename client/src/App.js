@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
-import SpotList from "./components/SpotList";
-import Spot from "./components/Spot";
+import {BrowserRouter as Router, Switch, Link} from "react-router-dom";
+// import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+// import SpotList from "./components/SpotList";
+// import Spot from "./components/Spot";
 import "./App.css";
 
 class App extends Component {
@@ -18,8 +19,8 @@ class App extends Component {
                     </div>
 
                     <Switch>
-                      <Route exact path="/" component={SpotList}/>
-                      <Route path="/Spot/:id" component={Spot}/>
+                      {/* <Route exact path="/" component={SpotList}/> */}
+                      {/* <Route path="/Spot/:id" component={Spot}/> */}
                     </Switch>
                 </div>
             </Router>

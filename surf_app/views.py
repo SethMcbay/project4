@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import viewsets
 
-from .serializer import SpotSerializer, ShopSerializer, NotesSerializer
+from .serializer import SpotSerializer, ShopSerializer, NoteSerializer
 from .models import Spot, Shop, Notes
 
 
@@ -17,4 +17,4 @@ class ShopView(viewsets.ModelViewSet):
 
 class NotesView(viewsets.ModelViewSet):
     queryset = Notes.objects.all()
-    serializer_class = NotesSerializer    
+    serializer_class = NoteSerializer    
