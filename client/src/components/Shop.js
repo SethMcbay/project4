@@ -79,7 +79,7 @@ class Shop extends Component {
                             id="address"
                             name="address"
                             onChange={this.handleChange}
-                            value={this.state.shop.description}
+                            value={this.state.shop.address}
                         />
                     </div>
                     <div>
@@ -88,16 +88,16 @@ class Shop extends Component {
                             id="rental"
                             name="rental"
                             onChange={this.handleChange}
-                            value={this.state.shop.description}
+                            value={this.state.shop.rental}
                         />
                     </div>
                     <div>
-                        <label htmlFor="">Rental</label>
+                        <label htmlFor="">Buy</label>
                         <textarea
-                            id="rental"
-                            name="rental"
+                            id="buy"
+                            name="buy"
                             onChange={this.handleChange}
-                            value={this.state.shop.rental}
+                            value={this.state.shop.buy}
                         />
                     </div>
                     <button>Update</button>

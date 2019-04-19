@@ -22,7 +22,6 @@ class App extends Component {
                     <Switch>
                       <Route exact path="/" component={SpotList}/>
                       <Route path="/spot" component={Spot}/>
-
                     </Switch>
                 </div>
             </Router>
