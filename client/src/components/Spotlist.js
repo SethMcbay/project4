@@ -13,7 +13,7 @@ export default class SpotList extends Component {
     }
 
     getSpots = async () => {
-        const res = await axios.get('/api/v1/spot')
+        const res = await axios.get('/api/v1/spot/')
         const spots = res.data
         this.setState({spots})
     }

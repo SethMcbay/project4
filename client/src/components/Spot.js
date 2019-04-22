@@ -1,21 +1,52 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 // import SpotForm from './SpotForm'
 
-class Spot extends Component {
+export default class Spot extends Component {
     state = {
-        spot: {},
+        spot: [],
         shop: [],
         notes: [],
+        NewSpot: {
+            name: '',
+           location: '',
+        },
         redirectToHome: false,
         isEditFormDisplayed: false
-    }
+    };
 
     componentDidMount() {
-        const spotId = this.props.match.params.id
-        this.fetchSpot(spotId)
+        this.getSpot()
+        
     }
+
+    // get list 
+    //put it in state 
+    getSpot = async () => {
+        try {
+            
+            const res = await axios.get(`/api/v1/spot/`);
+            this.setState({ spot: res.data });
+        }
+        catch(err) {
+            console.log(err)
+        }
+    };
+
+
+    handleChange = (e) => {
+        const clonedNewSpot = {...this.state.NewSpot}
+        clonedNewSpot[e.target.name] = e.target.value
+        this.setState({NewSpot: clonedNewSpot})
+    }
+
+    // handleSignUp = (e) => {
+    //     e.preventDefault()
+    //     this.createSpot()    
+    // }
+
+
 
     fetchSpot = async (spotId) => {
         try {
@@ -23,13 +54,25 @@ class Spot extends Component {
             this.setState({
                 spot: res.data,
                 shop: res.data.shop
-            })
+            });
         }
         catch(err) {
             console.log(err)
         }
     }
 
+    addNewSpot = async (e) => {
+        e.preventDefault()
+         try {
+            const res = await axios.post(`/api/v1/spot/`, this.state.NewSpot)
+             this.setState({
+                 redirectToHome: true
+            })
+        }
+       catch(err) {
+            console.log(err)
+       }
+    }
     deleteSpot = async () => {
          try {
             const res = await axios.delete(`/api/v1/spot/${this.props.match.params.id}/`)
@@ -56,61 +99,83 @@ class Spot extends Component {
         }
     }
 
-    handleChange = (e) => {
-        const clonedSpot = {...this.state.spot}
-        clonedSpot[e.target.name] = e.target.value
-
-        this.setState({
-            spot: clonedSpot
-        })
-    }
+    
 
     toggleEditForm = () => {
         this.setState((state, props) => {
             return {isEditFormDisplayed: !state.isEditFormDisplayed}
         })
     }
+    deleteSpot = () => {
+        axios.delete(`/api/v1/spot/${this.props.match.params.id}/`).then(res => {
+            this.props.history.goBack()
+        })
+    };
+    
 
     render() {
         if(this.state.redirectToHome === true) {
             return <Redirect to="/" />
-        }
+        };
 
         return (
-            <div>
-                Im spot component
-                <button onClick={this.deleteSpot}>
-                    Delete
-                </button>
-                <button onClick={this.toggleEditForm}>
-                    {this.state.isEditFormDisplayed === true ? 'Hide Edit Form' : 'Edit'}
-                </button>
-                {
-                    this.state.isEditFormDisplayed
-                        // // ? <SpotForm
-                        //     spot={this.state.spot}
-                        //     handleChange={this.handleChange}
-                        //     handleSubmit={this.updateSpot}
-                        //     submitBtnText="Update"
-                        // />
-                        // <div>
-                        //     <img src={this.state.spot} alt={this.state.spot.name}/>
-                        //     <h1>{this.state.spot.name}</h1>
-                        // </div> // :
-                }
-                {/* {
-                    this.state.shop.map(shop => {
-                        return (
-                            <div key={shop.id}>
-                                <h4>{shop.title}</h4>
-                            
-                            </div>
-                        )
-                    })
-                } */}
-            </div>
-        )
-    }
-}
+    //         <div>
+    //             <div>
+    //                 <button onClick={this.deleteSpot}>
+    //                 Delete
+    //                 </button>
+    //             </div>
+                    
+    //             <button onClick={this.toggleEditForm}>Edit</button>
+                        
+    //          {this.state.spot.map((spot, i) => (
+    //         <div key={i}>
+    //           {/* <Link to={`spot/${spot._id}`}>{spot.name}</Link>  */}
+    //           {spot.name}
+            
+    //          <form onSubmit={this.handleSignUp}>
+    //         <div>
+    //          <label htmlFor="name">Join</label>
+    //           <input
+    //             type="text"
+    //             name="name"
+    //             onChange={this.handleChange}
+    //             value={this.state.user.name}
+    //           />
+    //         </div>
+    //         <button>Join</button>
+    //       </form>
+    //          </div>
+    //          </div>
+    //          }
+    //         ))
+    // }
+    // }
+        <div>
 
-export default Spot
+            <form onSubmit={this.addNewSpot}>
+                <input
+                    type='text'
+                    name='name'
+                    placeholder='name'
+                    onChange={this.handleChange}
+                    // value={this.state.newSpot.name}
+                    />
+                    
+                    <input
+            
+            type='text'
+            name='location'
+            placeholder='location'
+            onChange={this.handleChange}
+            // value={this.state.newSpot.name}
+            />
+        
+            
+        <button>Submit</button>
+            </form>
+        </div>
+           
+           
+        )}
+}

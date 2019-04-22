@@ -22,4 +22,4 @@ class SpotSerializer(serializers.ModelSerializer):
     shop = ShopSerializer(many=True, read_only=True)
     class Meta:
         model = Spot
-        fields = ('name', 'location', 'weather', 'spot', 'shop')
+        fields = ('name', 'location', 'shop')

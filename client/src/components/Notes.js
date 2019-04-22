@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import Spot from './spot';
 
 
 class Notes extends Component {
@@ -20,8 +21,12 @@ class Notes extends Component {
     render() {
 
         return (
+            <div>
+           
+                
+            </div>
           
-        );
+        }
     }
 }
 
