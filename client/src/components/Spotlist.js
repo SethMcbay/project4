@@ -15,6 +15,7 @@ export default class SpotList extends Component {
     getSpots = async () => {
         const res = await axios.get('/api/v1/spot/')
         const spots = res.data
+        console.log(res.data)
         this.setState({spots})
     }
 
@@ -23,14 +24,17 @@ export default class SpotList extends Component {
     const spots = this.state.spots.map((spot, i) => {
         return (
             <div key={i}>
-                <Link to={`spot/${spot._id}`}>{spot.name}</Link>
+                <Link to={`spot/${spot.id}`}>{spot.name}</Link>
             </div>
         )
     })
 
     return (
       <div>
+        
+        <Link to={`spot/`}>Add</Link>
         {spots}
+        
       </div>
     )
   }

@@ -41,13 +41,6 @@ export default class Spot extends Component {
         this.setState({NewSpot: clonedNewSpot})
     }
 
-    // handleSignUp = (e) => {
-    //     e.preventDefault()
-    //     this.createSpot()    
-    // }
-
-
-
     fetchSpot = async (spotId) => {
         try {
             const res = await axios.get(`/api/v1/spot/${spotId}/`)
@@ -99,8 +92,6 @@ export default class Spot extends Component {
         }
     }
 
-    
-
     toggleEditForm = () => {
         this.setState((state, props) => {
             return {isEditFormDisplayed: !state.isEditFormDisplayed}
@@ -111,47 +102,15 @@ export default class Spot extends Component {
             this.props.history.goBack()
         })
     };
-    
+
 
     render() {
         if(this.state.redirectToHome === true) {
-            return <Redirect to="/" />
+            return  <Redirect to="/" />
         };
 
         return (
-    //         <div>
-    //             <div>
-    //                 <button onClick={this.deleteSpot}>
-    //                 Delete
-    //                 </button>
-    //             </div>
-                    
-    //             <button onClick={this.toggleEditForm}>Edit</button>
-                        
-    //          {this.state.spot.map((spot, i) => (
-    //         <div key={i}>
-    //           {/* <Link to={`spot/${spot._id}`}>{spot.name}</Link>  */}
-    //           {spot.name}
-            
-    //          <form onSubmit={this.handleSignUp}>
-    //         <div>
-    //          <label htmlFor="name">Join</label>
-    //           <input
-    //             type="text"
-    //             name="name"
-    //             onChange={this.handleChange}
-    //             value={this.state.user.name}
-    //           />
-    //         </div>
-    //         <button>Join</button>
-    //       </form>
-    //          </div>
-    //          </div>
-    //          }
-    //         ))
-    // }
-    // }
-        <div>
+    
 
             <form onSubmit={this.addNewSpot}>
                 <input
@@ -159,23 +118,26 @@ export default class Spot extends Component {
                     name='name'
                     placeholder='name'
                     onChange={this.handleChange}
-                    // value={this.state.newSpot.name}
-                    />
+                     
+                />
                     
                     <input
             
-            type='text'
-            name='location'
-            placeholder='location'
-            onChange={this.handleChange}
-            // value={this.state.newSpot.name}
-            />
+                type='text'
+                name='location'
+                placeholder='location'
+                onChange={this.handleChange}
+           
+                />
+        {/* <button onClick={this.toggleEditForm}>Edit Spot</button> */}
         
             
         <button>Submit</button>
             </form>
-        </div>
+  
            
-           
-        )}
+        )
+    }
+
+ 
 }
