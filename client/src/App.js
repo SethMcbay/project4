@@ -4,6 +4,7 @@ import SpotList from "./components/Spotlist";
 import Spot from "./components/Spot"
 import "./App.css";
 import SpotOne from "./components/SpotOne";
+import Shop from "./components/Shop";
 
 class App extends Component {
     render() {
@@ -24,6 +25,7 @@ class App extends Component {
                       <Route exact path="/" component={SpotList}/>
                       <Route exact path="/spot" component={Spot}/>
                       <Route exact path="/spot/:spotId" component={SpotOne}/>
+                      <Route exact path="/spot/:spotId/shop" component={Shop}/>
                     </Switch>
                 </div>
             </Router>

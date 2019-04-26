@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Redirect, Link } from 'react-router-dom';
 import axios from "axios";
+import ShopForm from "./ShopForm"
 
 class Shop extends Component {
   state = {
-      spot: {
+      shop: {
           name: '',
           address: '',
           rental: '',
@@ -15,13 +16,24 @@ class Shop extends Component {
   }
 
   componentDidMount = () => {
-      axios.get(`/api/v1/${this.props.match.params.id}`).then(res => {
-          this.setState({spot: res.data})
+      console.log("component did mount")
+      axios.get(`/api/v1/spot/${this.props.match.params.spotId}`).then(res => {
+          this.setState({shop: res.data})
       })
+  }
+  createShop = (e) => {
+        e.preventDefault()
+        axios
+            .post(`/api/v1/spot/${this.props.match.params.spotId}`, {
+                name: this.state.shop.name,
+                address: this.state.shop.address,
+                rental: this.state.shop.rental,
+                buy: this.state.shop.buy
+            })
   }
 
   deleteShop = () => {
-      axios.delete(`/api/v1/${this.props.match.params.id}`).then(res => {
+      axios.delete(`/api/v1/spot/${this.props.match.params.spotId}`).then(res => {
           this.setState({redirectToHome: true})
       })
   }
@@ -41,7 +53,7 @@ class Shop extends Component {
   updateShop = (e) => {
       e.preventDefault()
       axios
-        .put(`/api/v1/${this.props.match.params.id}`, {
+        .put(`/api/v1/shop/${this.props.match.params.spotId}`, {
             name: this.state.shop.name,
             description: this.state.shop.description
         })
@@ -51,6 +63,7 @@ class Shop extends Component {
   }
 
   render() {
+      console.log("HELLOOOO")
     if(this.state.redirectToHome) {
         return (<Redirect to="/" />)
     }
@@ -58,6 +71,9 @@ class Shop extends Component {
     return (
       <div>
         <Link to="/">Back to Spots</Link>
+        <ShopForm 
+        shopId={this.props.match.params.spotId}
+        />
         <h1>Shop</h1>
         <button onClick={this.toggleEditForm}>Edit</button>
         {

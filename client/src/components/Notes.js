@@ -16,7 +16,7 @@ class Notes extends Component {
     getNote = async () => {
         const res = await axios.get(`/api/v1/note/${this.props.match.params.userId}/notes/${this.props.match.params.id}`)
         const wine = res.data
-        this.setState({ wine })
+        this.setState({ notes })
     }
     render() {
 

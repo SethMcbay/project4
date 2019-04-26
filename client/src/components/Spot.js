@@ -25,7 +25,6 @@ export default class Spot extends Component {
     //put it in state 
     getSpot = async () => {
         try {
-            
             const res = await axios.get(`/api/v1/spot/`);
             this.setState({ spot: res.data });
         }
@@ -129,7 +128,7 @@ export default class Spot extends Component {
                 onChange={this.handleChange}
            
                 />
-        {/* <button onClick={this.toggleEditForm}>Edit Spot</button> */}
+        
         
             
         <button>Submit</button>
