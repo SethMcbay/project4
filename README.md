@@ -21,3 +21,21 @@ https://imgur.com/O2AebPC<br>
 ##Technology Used<br>
 React<br>
 Python
+
+
+##Backend Dependencies<br>
+gunicorn<br>
+dotenv<br>
+django<br>
+django_restframework<br>
+pipenv<br>
+psycopg2<br>
+
+##Frontend Dependencies<br>
+"axios": "^0.18.0",<br>
+"dotenv": "^7.0.0",<br>
+"react": "^16.8.6",<br>
+"react-dom": "^16.8.6",<br>
+"react-router-dom": "^5.0.0",<br>
+"react-scripts": "2.1.8",<br>
+"styled-components": "^4.2.0"
