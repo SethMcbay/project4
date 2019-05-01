@@ -53,7 +53,7 @@ class Shop extends Component {
   updateShop = (e) => {
       e.preventDefault()
       axios
-        .put(`/api/v1/shop/${this.props.match.params.spotId}`, {
+        .put(`/api/v1/shop/${this.props.match.params.spotId}/`, {
             name: this.state.shop.name,
             description: this.state.shop.description
         })

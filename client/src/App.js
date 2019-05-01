@@ -5,6 +5,7 @@ import Spot from "./components/Spot"
 import "./App.css";
 import SpotOne from "./components/SpotOne";
 import Shop from "./components/Shop";
+import ShopForm from "./components/ShopForm"
 
 class App extends Component {
     render() {
@@ -23,9 +24,10 @@ class App extends Component {
 
                     <Switch>
                       <Route exact path="/" component={SpotList}/>
-                      <Route exact path="/spot" component={Spot}/>
-                      <Route exact path="/spot/:spotId" component={SpotOne}/>
-                      <Route exact path="/spot/:spotId/shop" component={Shop}/>
+                      <Route exact path="/spot/" component={Spot}/>
+                      <Route exact path="/spot/:spotId/" component={SpotOne}/>
+                      <Route exact path="/spot/:spotId/shop/" component={Shop}/>
+                      <Route exact path="/spot/:spotId/shopform/" component={ShopForm}/>
                     </Switch>
                 </div>
             </Router>
