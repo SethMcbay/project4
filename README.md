@@ -20,7 +20,12 @@ https://imgur.com/O2AebPC<br>
 
 ##Technology Used<br>
 React<br>
-Python
+Python<br>
+Django<br>
+Heroku<br>
+LucidChart<br>
+Imgur<br>
+Trello
 
 
 ##Backend Dependencies<br>
@@ -38,4 +43,8 @@ psycopg2<br>
 "react-dom": "^16.8.6",<br>
 "react-router-dom": "^5.0.0",<br>
 "react-scripts": "2.1.8",<br>
-"styled-components": "^4.2.0"
+
+
+##Version 2<br>
+I want to actually finish the app with react.<br> I want to add more pictures and make the app connect to all the pages to each other.<br> I want to try harder to learn react and styling components.<br> I want to make the api call and finish up all the heroku challenges. 
+
